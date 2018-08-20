@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="Main" type="Node"]
+
+[node name="CurrentLevelContainer" type="Node" parent="." index="0"]
+
+[node name="GameLight" type="CanvasModulate" parent="." index="1"]
+
+color = Color( 1, 1, 1, 1 )
+
+

@@ -11,8 +11,19 @@ config_version=3
 [application]
 
 config/name="Unname game 3.0.6"
+run/main_scene="res://Scenes/Main/Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://Scenes/Global/Global.tscn"
+
+[display]
+
+window/stretch/mode="2d"
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=true
