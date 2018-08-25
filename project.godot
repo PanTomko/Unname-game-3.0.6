@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Unname game 3.0.6"
-run/main_scene="res://Scenes/Main/Main.tscn"
+run/main_scene="res://Experiments/PlayerControlTest.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -21,6 +21,13 @@ Global="*res://Scenes/Global/Global.tscn"
 [display]
 
 window/stretch/mode="2d"
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="platform"
+2d_physics/layer_3="ground"
+2d_physics/layer_4="traps"
 
 [rendering]
 

@@ -8,12 +8,15 @@ var player_type = player_types.NULL
 
 var orientation = Vector2( 0, -1 ) 
 const ZERO = Vector2( 0, -1 ) 
-
 var gravity = Vector2( 0, 98*6 )
 
+# Jumping state needs
 var movement_speed = 200
-var jump_str = 1000
+var jump_str = 250
+var jump_acceleration_time = 1
+var jump_acceleration_scale = 3
 
+# For physic simulation
 var motion = ZERO
 var force = ZERO
 var directio
@@ -28,7 +31,7 @@ func _ready():
 
 func _physics_process(delta):
 	
-	if is_on_floor():
+	if is_on_floor() or is_on_ceiling():
 		force.y = 0.0
 	
 	# update FSM
@@ -44,13 +47,7 @@ func _physics_process(delta):
 	# proces motion
 	move_and_slide( motion, orientation )
 	
-	
-	
 	# clear motion
 	motion = ZERO
-
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+	
 

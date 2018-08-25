@@ -13,22 +13,24 @@ extents = Vector2( 513.139, 30.6812 )
 custom_solver_bias = 0.0
 extents = Vector2( 514, 8 )
 
-[node name="PlayerControlTest" type="Node2D" index="0"]
+[node name="PlayerControlTest" type="Node2D"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
-position = Vector2( 266.799, 102.499 )
+position = Vector2( 302, 378 )
 
 [node name="Obj" type="StaticBody2D" parent="." index="1"]
 
+editor/display_folded = true
 position = Vector2( 509.978, 482.681 )
 input_pickable = false
-collision_layer = 1
+collision_layer = 4
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Collision" ]
 
 [node name="Sprite" type="Sprite" parent="Obj" index="0"]
 
@@ -41,17 +43,73 @@ _sections_unfolded = [ "Transform" ]
 
 shape = SubResource( 1 )
 
-[node name="ObjOnWay" type="StaticBody2D" parent="." index="2"]
+[node name="Obj2" type="StaticBody2D" parent="." index="2"]
 
-position = Vector2( 1043, 317 )
+editor/display_folded = true
+position = Vector2( 668, 133 )
 input_pickable = false
-collision_layer = 1
+collision_layer = 4
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Obj2" index="0"]
+
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1024, 64 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Obj2" index="1"]
+
+shape = SubResource( 1 )
+
+[node name="Obj3" type="StaticBody2D" parent="." index="3"]
+
+editor/display_folded = true
+position = Vector2( 29.8848, 328.754 )
+rotation = -1.57453
+input_pickable = false
+collision_layer = 4
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Obj3" index="0"]
+
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1024, 64 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Obj3" index="1"]
+
+shape = SubResource( 1 )
+
+[node name="ObjOnWay" type="StaticBody2D" parent="." index="4"]
+
+editor/display_folded = true
+position = Vector2( 1043, 317 )
+input_pickable = false
+collision_layer = 2
+collision_mask = 0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="ObjOnWay" index="0"]
 

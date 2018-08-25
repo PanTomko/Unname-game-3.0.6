@@ -1,23 +1,26 @@
+# Transition to Idle // InAir
+
 extends "res://Scenes/Player/FSM/SuperStates/direction_state.gd"
 
 var animation_time = 0.0
+var pressing = true
 
 func exit():
 	animation_time = 0.0
+	pressing = true
 
 func enter():
-	animation_time = 0.0
-	host.force.y = -300
-	pass
+	host.force.y = host.jump_str * host.orientation.y
 
 func update( delta ):
 	
 	var direction = calc_input_direction_x()
 
 	if animation_time < 0.3 and host.force.y != 0:
-		if animation_time < 0.2 and Input.is_action_pressed("ui_up") :
-			host.force.y -= host.jump_str * delta 
-			print("as")
+		if animation_time < 1.0 and Input.is_action_pressed("ui_up") and pressing:
+			host.force.y += host.jump_str * host.orientation.y * delta * host.jump_acceleration_scale
+		else:
+			pressing = false
 			
 		host.motion.x += calc_motion( direction, host.movement_speed )
 		animation_time += delta

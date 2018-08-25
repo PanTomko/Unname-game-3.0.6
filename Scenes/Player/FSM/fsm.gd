@@ -11,13 +11,23 @@ func set( data_host ):
 		i.host = host
 
 func update( delta ):
-	pass
+	
+	# Ducking kind of
+	if Input.is_action_pressed( "ui_down" ):
+		host.set_collision_mask_bit( 1, false )
+	else:
+		host.set_collision_mask_bit( 1, true )
+	
+	# Chacking if player is in InAir state
+	if current_state.name != "Jumping":
+		is_in_air()
 
 func is_in_air(delta = 0):
 	if !host.is_on_floor():
 		if current_state.name != "InAir": change_state( "InAir", delta )
 		return true
 	else:
+		if current_state.name == "InAir": change_state( "Idle", delta )
 		return false
 
 func change_state( name, delta = 0 ):

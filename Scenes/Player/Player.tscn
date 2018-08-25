@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Player/player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -7,19 +7,21 @@
 [ext_resource path="res://Scenes/Player/FSM/States/jumping.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Player/FSM/States/Idle.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/Player/FSM/States/InAir.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Player/Crouching.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 15.8609, 24.0355 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
-collision_mask = 1
+collision_mask = 14
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -42,6 +44,7 @@ shape = SubResource( 1 )
 
 [node name="FSM" type="Node" parent="." index="3"]
 
+editor/display_folded = true
 script = ExtResource( 3 )
 
 [node name="Walking" type="Node" parent="FSM" index="0"]
@@ -59,5 +62,9 @@ script = ExtResource( 6 )
 [node name="InAir" type="Node" parent="FSM" index="3"]
 
 script = ExtResource( 7 )
+
+[node name="Crouching" type="Node" parent="FSM" index="4"]
+
+script = ExtResource( 8 )
 
 

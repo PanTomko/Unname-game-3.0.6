@@ -1,3 +1,5 @@
+# Transition to Jumping // InAir // Walking
+
 extends "res://Scenes/Player/FSM/SuperStates/direction_state.gd"
 
 func update( delta ):
@@ -6,9 +8,7 @@ func update( delta ):
 	if direction == 0:
 		
 		# Are we still idle ?
-		if get_parent().is_in_air(delta):
-			pass
-		elif Input.is_action_pressed( "ui_up" ):
+		if Input.is_action_pressed( "ui_up" ):
 			get_parent().change_state( "Jumping", delta )
 		else:
 			# Yes we are
