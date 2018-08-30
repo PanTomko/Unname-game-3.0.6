@@ -101,7 +101,7 @@ shape = SubResource( 1 )
 [node name="ObjOnWay" type="StaticBody2D" parent="." index="4"]
 
 editor/display_folded = true
-position = Vector2( 1043, 317 )
+position = Vector2( 1026, 354 )
 input_pickable = false
 collision_layer = 2
 collision_mask = 0
@@ -110,6 +110,9 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 _sections_unfolded = [ "Collision", "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="ObjOnWay" index="0"]
 

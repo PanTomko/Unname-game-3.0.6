@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/tileset_generator/Tile.gd" type="Script" id=1]
+
+[node name="Tile" type="Sprite"]
+region_enabled = true
+script = ExtResource( 1 )
+_sections_unfolded = [ "Region" ]
+will_export = true
+gen_body = true
+gen_polygon_shape = true
+

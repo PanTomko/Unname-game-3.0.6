@@ -16,11 +16,15 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://Scenes/Global/Global.tscn"
+Global="*res://Scenes/Global/Global.gd"
 
 [display]
 
 window/stretch/mode="2d"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "tileset_generator" )
 
 [layer_names]
 
@@ -28,6 +32,7 @@ window/stretch/mode="2d"
 2d_physics/layer_2="platform"
 2d_physics/layer_3="ground"
 2d_physics/layer_4="traps"
+2d_physics/layer_5="portals"
 
 [rendering]
 

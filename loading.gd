@@ -6,7 +6,7 @@ signal on_load_done
 
 func _ready():
 	connect( "on_load_done", self, "set_load")
-	T1.start(self, "load_long")
+	T1.start(self, "load_long", 10)
 	print("Noice1")
 
 func load_long( data ):

@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Textures/Tilemaps/testing_tiles.png" type="Texture" id=1]
+[ext_resource path="res://addons/tileset_generator/Tile.gd" type="Script" id=2]
+
+[node name="TestingTileSet" type="Node2D"]
+
+[node name="testing_tiles-tex" type="Node2D" parent="." index="0"]
+
+[node name="ground" type="Sprite" parent="testing_tiles-tex" index="0"]
+
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+script = ExtResource( 2 )
+will_export = true
+gen_body = true
+gen_polygon_shape = true
+id = 0.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="testing_tiles-tex/ground" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="testing_tiles-tex/ground/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
+
+[node name="background" type="Sprite" parent="testing_tiles-tex" index="1"]
+
+position = Vector2( 33, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 32, 32 )
+script = ExtResource( 2 )
+will_export = true
+gen_body = false
+gen_polygon_shape = false
+id = 1.0
+
+[node name="platform" type="Sprite" parent="testing_tiles-tex" index="2"]
+
+position = Vector2( 0, 33 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 32, 32, 32 )
+script = ExtResource( 2 )
+will_export = true
+gen_body = true
+gen_polygon_shape = true
+id = 2.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="testing_tiles-tex/platform" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="testing_tiles-tex/platform/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -16, -5, 16, -5, 16, 4, -16, 4 )
+one_way_collision = true
+
+
