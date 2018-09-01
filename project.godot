@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Unname game 3.0.6"
-run/main_scene="res://Experiments/PlayerControlTest.tscn"
+run/main_scene="res://Scenes/Main/Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]

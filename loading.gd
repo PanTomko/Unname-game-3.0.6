@@ -10,10 +10,15 @@ func _ready():
 	print("Noice1")
 
 func load_long( data ):
-	yield( get_tree().create_timer(5.0), "timeout")
-	print("Noice2")
+	lol()
+	call_deferred()
+	print("Noice3")
 	#emit_signal("on_load_done")
 	pass
+
+func lol():
+	yield( get_tree().create_timer(5.0), "timeout")
+	print("Noice2")
 
 func set_load():
 	print("Noice")

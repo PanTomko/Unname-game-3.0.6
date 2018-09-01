@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Shaders/shadermaterial_transition.tres" type="Material" id=1]
+[ext_resource path="res://Scenes/SFX/Transition/transition.gd" type="Script" id=2]
+[ext_resource path="res://Textures/Transitions/gradient_tr.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Transitions/gradient_back_tr.png" type="Texture" id=4]
+
+[node name="Transition" type="ColorRect"]
+
+material = ExtResource( 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1023.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Material" ]
+fade_out_texture = ExtResource( 3 )
+fade_in_texture = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="." index="0"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+_sections_unfolded = [ "playback" ]
+
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
+
+
