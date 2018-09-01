@@ -8,11 +8,9 @@ var level
 var active = false
 
 func _on_PortalLevel_body_entered(body):
-	print("HMMM")
 	
 	if active : 
 		level.emit_signal( "change_level_signal", [conected_path, conected_portal] )
-		
 		active = false
 	
 
