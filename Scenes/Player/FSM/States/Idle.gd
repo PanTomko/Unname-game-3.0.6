@@ -8,7 +8,7 @@ func update( delta ):
 	if direction == 0:
 		
 		# Are we still idle ?
-		if Input.is_action_pressed( "ui_up" ):
+		if Input.is_action_just_pressed( "ui_up" ) and (host.can_jump or host.can_double_jump):
 			get_parent().change_state( "Jumping", delta )
 		else:
 			# Yes we are

@@ -10,6 +10,10 @@ func exit():
 	pressing = true
 
 func enter():
+	
+	if host.can_jump == true: host.can_jump = false
+	elif host.can_double_jump == true: host.can_double_jump = false
+	
 	host.force.y = host.jump_str * host.orientation.y
 
 func update( delta ):

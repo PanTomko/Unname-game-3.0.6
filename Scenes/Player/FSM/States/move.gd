@@ -7,7 +7,7 @@ func update( delta ):
 	
 	# moves player in x direction of movement_speed p/s
 	if direction != 0:
-		if Input.is_action_pressed( "ui_up" ):
+		if Input.is_action_just_pressed( "ui_up" ) and (host.can_jump or host.can_double_jump):
 			get_parent().change_state( "Jumping" )
 		else:
 			host.motion.x += calc_motion( direction, host.movement_speed )

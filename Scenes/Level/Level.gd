@@ -20,3 +20,9 @@ func get_portal_position( portal_ID ):
 	for i in get_node("PoralLevels").get_children():
 		if i.ID == portal_ID:
 			return i.get_node("Position2D").global_position
+
+func get_min_pos():
+	return get_node("MinMax/MinPos").global_position
+
+func get_max_pos():
+	return get_node("MinMax/MaxPos").global_position

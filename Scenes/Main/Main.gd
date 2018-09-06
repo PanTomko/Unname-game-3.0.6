@@ -18,11 +18,7 @@ var new_level_data
 var player = preload("res://Scenes/Player/Player.tscn").instance()
 
 func _ready():
-	change_level_to( ["res://Experiments/LevelExperimental.tscn",0] )
-	
-	#get_node("CurrentLevelContainer").add_child( player )
-	#do_change_level_to( ["res://Experiments/LevelExperimental.tscn",0] )
-	pass
+	change_level_to( ["res://Experiments/LevelExperimental3.tscn",0] )
 
 func load_level( path ):
 	print(" -- T1 : loading level : ", path)
@@ -76,29 +72,12 @@ func set_loaded_level():
 	current_level = loaded_level
 	Mutex1.unlock()
 	
-
 	current_level.connect( "change_level_signal", self, "change_level_to")
 	get_node("CurrentLevelContainer").add_child( current_level )
 	
-	
 	player.position = current_level.get_portal_position( new_level_data[1] )
+	player.set_camera( current_level.get_min_pos(), current_level.get_max_pos() )
 	get_node("CurrentLevelContainer").add_child( player )
-	
-#	load_level( data[0] )
-#
-#	current_level = loaded_level
-#	loaded_level = null
-#
-#	get_node("CurrentLevelContainer").add_child( current_level )
-#	current_level.connect( "change_level_signal", self, "do_change_level_to")
-#
-#
-#
-#
-#
-#	get_node("CurrentLevelContainer").add_child( player )
-#	player.position = current_level.get_portal_position( data[1] )
-	pass
 
 func change_level_to(data):
 	
@@ -111,12 +90,6 @@ func change_level_to(data):
 	
 	T1.start( self, "load_level", data[0] )
 	$GUI.transition_fade_out()
-#	if T1.is_active(): T1.wait_to_finish()
-#
-#	clear_rest()
-#	clear_level( current_level )
-#
-#	T1.start( self, "change_level_to", [data[0],data[1]] )
 
 func _on_GUI_transition_out_done():
 	clear_current_level()
