@@ -31,7 +31,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Ground" type="TileMap" parent="." index="1"]
+[node name="Traps" type="Node2D" parent="." index="1"]
+
+[node name="Ground" type="TileMap" parent="." index="2"]
 
 z_index = 1
 mode = 0
@@ -56,7 +58,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Platforms" type="TileMap" parent="." index="2"]
+[node name="Platforms" type="TileMap" parent="." index="3"]
 
 mode = 0
 tile_set = null
@@ -80,9 +82,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="PoralLevels" type="Node" parent="." index="3"]
+[node name="PoralLevels" type="Node" parent="." index="4"]
 
-[node name="MinMax" type="Node" parent="." index="4"]
+[node name="MinMax" type="Node" parent="." index="5"]
 
 [node name="MinPos" type="Position2D" parent="MinMax" index="0"]
 

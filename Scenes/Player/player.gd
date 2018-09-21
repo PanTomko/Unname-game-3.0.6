@@ -8,7 +8,7 @@ var player_type = player_types.NULL
 
 var orientation = Vector2( 0, -1 ) 
 const ZERO = Vector2( 0, -1 ) 
-var gravity = Vector2( 0, 98*10 )
+var gravity = Vector2( 0, 98*9 )
 
 # Jumping state needs
 var movement_speed = 200
@@ -23,6 +23,10 @@ var can_double_jump = false
 var motion = ZERO
 var force = ZERO
 var directio
+
+# Health
+signal player_took_damage
+signal player_zero_life
 
 func _ready():
 	print("Player _ready.")
@@ -55,8 +59,19 @@ func _physics_process(delta):
 	# proces motion
 	move_and_slide( motion, orientation )
 	
+	# collision respnse
+	var teak_dmg = false
+	for i in range(get_slide_count()):
+		var collider = get_slide_collision( i )
+		if collider.collider.is_in_group("traps") and collider.collider.is_in_group("coll_damage"):
+			teak_dmg = true
+	
+	if teak_dmg : get_node( "Health" ).take_damage()
+	
 	# clear motion
 	motion = ZERO
+	
+	
 	
 
 func set_camera(min_pos, max_pos):

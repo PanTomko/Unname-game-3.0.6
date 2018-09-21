@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Menu/Option.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Menu/OptionScrips/option.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Menu/OptionScrips/play.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Menu/OptionScrips/exit_option.gd" type="Script" id=5]
 
-[node name="Menu" type="MarginContainer"]
+[node name="Menu" type="MarginContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -63,10 +64,12 @@ margin_top = 227.0
 margin_right = 94.0
 margin_bottom = 268.0
 
-[node name="Option2" parent="Options" index="3" instance=ExtResource( 2 )]
+[node name="Exit" parent="Options" index="3" instance=ExtResource( 2 )]
 
 margin_top = 272.0
 margin_right = 94.0
 margin_bottom = 313.0
+text = "Exit"
+script = ExtResource( 5 )
 
 

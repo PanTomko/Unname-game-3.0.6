@@ -14,8 +14,10 @@ var game_stae = NULL
 
 # Data game
 var game = preload("res://Scenes/Game/Game.tscn")
+var game_laded = false # need to be done !
 
 var current_level = null
+var current_portal_id = -1
 var loaded_level = null
 
 var new_level = false
@@ -28,10 +30,20 @@ var player = preload("res://Scenes/Player/Player.tscn").instance()
 
 func _ready():
 	
+	player.connect( "player_took_damage", self, "respawn_player")
+	player.connect( "player_zero_life", self, "reset_player")
+	
 	bring_main_menu()
 	#bring_game()
 	#change_level_to( ["res://Experiments/LevelExperimental3.tscn",0] )
 	pass
+
+func reset_player():
+	player.get_node("Health").health = player.get_node("Health").max_health
+	change_level_to( ["res://Experiments/LevelExperimental.tscn",0] )
+
+func respawn_player():
+	player.position = current_level.get_portal_position( current_portal_id )
 
 func load_level( path ):
 	print(" -- T1 : loading level : ", path)
@@ -81,6 +93,7 @@ func set_loaded_level():
 	Mutex1.lock()
 	print("Main : set loaded level : ", loaded_level )
 	current_level = loaded_level
+	current_portal_id = new_level_data[1]
 	Mutex1.unlock()
 	
 	current_level.connect( "change_level_signal", self, "change_level_to")
@@ -105,18 +118,6 @@ func change_level_to(data):
 func _on_GUI_transition_out_done():
 	clear_current_level()
 	new_level = true
-
-func _process(delta):
-	if new_level and is_loading_done() and game_stae == GAME:
-		set_loaded_level()
-		clear_loaded_level()
-		get_node("Game/GUI").transition_fade_in()
-		new_level = false
-		
-		T1.wait_to_finish()
-	
-	if Input.is_action_just_pressed( "ui_accept" ) and game_stae == GAME:
-		change_level_to( ["res://Experiments/LevelExperimental.tscn",0] )
 
 func bring_game():
 	
@@ -147,3 +148,15 @@ func remove_game():
 	loaded_level = null
 	
 	get_node("Game").queue_free()
+
+func _process(delta):
+	if new_level and is_loading_done() and game_stae == GAME:
+		set_loaded_level()
+		clear_loaded_level()
+		get_node("Game/GUI").transition_fade_in()
+		new_level = false
+		
+		T1.wait_to_finish()
+	
+	if Input.is_action_just_pressed( "ui_accept" ) and game_stae == GAME:
+		player.get_node( "Health" ).take_damage()

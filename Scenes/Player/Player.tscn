@@ -1,20 +1,21 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Player/player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Player/FSM/fsm.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/Player/FSM/States/move.gd" type="Script" id=4]
-[ext_resource path="res://Scenes/Player/FSM/States/jumping.gd" type="Script" id=5]
-[ext_resource path="res://Scenes/Player/FSM/States/Idle.gd" type="Script" id=6]
-[ext_resource path="res://Scenes/Player/FSM/States/InAir.gd" type="Script" id=7]
-[ext_resource path="res://Scenes/Player/Crouching.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/Player/health.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Player/FSM/fsm.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Player/FSM/States/move.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Player/FSM/States/jumping.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Player/FSM/States/Idle.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Player/FSM/States/InAir.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/Player/Crouching.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 15.8609, 24.0355 )
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 z_index = 1
 input_pickable = false
@@ -43,31 +44,36 @@ blend_times = [  ]
 
 shape = SubResource( 1 )
 
-[node name="FSM" type="Node" parent="." index="3"]
+[node name="Health" type="Node" parent="." index="3"]
 
 script = ExtResource( 3 )
 
-[node name="Walking" type="Node" parent="FSM" index="0"]
+[node name="FSM" type="Node" parent="." index="4"]
 
+editor/display_folded = true
 script = ExtResource( 4 )
 
-[node name="Jumping" type="Node" parent="FSM" index="1"]
+[node name="Walking" type="Node" parent="FSM" index="0"]
 
 script = ExtResource( 5 )
 
-[node name="Idle" type="Node" parent="FSM" index="2"]
+[node name="Jumping" type="Node" parent="FSM" index="1"]
 
 script = ExtResource( 6 )
 
-[node name="InAir" type="Node" parent="FSM" index="3"]
+[node name="Idle" type="Node" parent="FSM" index="2"]
 
 script = ExtResource( 7 )
 
-[node name="Crouching" type="Node" parent="FSM" index="4"]
+[node name="InAir" type="Node" parent="FSM" index="3"]
 
 script = ExtResource( 8 )
 
-[node name="Camera2D" type="Camera2D" parent="." index="4"]
+[node name="Crouching" type="Node" parent="FSM" index="4"]
+
+script = ExtResource( 9 )
+
+[node name="Camera2D" type="Camera2D" parent="." index="5"]
 
 anchor_mode = 1
 rotating = false
